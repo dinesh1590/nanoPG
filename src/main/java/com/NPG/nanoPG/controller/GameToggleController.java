@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+@CrossOrigin(origins = {
+        "http://localhost:4200",
+        "https://riddlemesilly.netlify.app"
+})
 @RestController
 @RequestMapping("/api/games")
-@CrossOrigin(origins = "http://localhost:4200")
 public class GameToggleController {
 
     @Autowired
@@ -18,6 +21,11 @@ public class GameToggleController {
     @GetMapping("/config")
     public Map<String, Boolean> getConfigs() {
         return service.getAll();
+    }
+
+    @GetMapping("/configs")
+    public Map<String, Boolean> getConfigs1() {
+        return service.getAllAndChange();
     }
 
     @PutMapping("/config/{key}")
