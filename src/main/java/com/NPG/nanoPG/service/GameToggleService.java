@@ -30,5 +30,13 @@ public class GameToggleService {
         }
         return false;
     }
+
+    public Map<String, Boolean> getAllAndChange() {
+
+        gameStates.put("chat",!gameStates.get("chat"));
+        gameStates.put("flames",!gameStates.get("chat"));
+
+        return gameStates;
+    }
 }
 
